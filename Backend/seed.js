@@ -5,6 +5,12 @@ import dotenv from "dotenv";
 import { User } from "./models/user_model.js";
 import { Activity, DailySchedule } from "./models/activity_model.js";
 
+import dns from "node:dns";
+// Use reliable public DNS for MongoDB Atlas SRV resolution
+try {
+  dns.setServers(["8.8.8.8", "1.1.1.1"]);
+} catch {}
+
 dotenv.config();
 
 const users = [
